@@ -5,9 +5,6 @@ conditioning:
 
 data:
   name: ffhq
-  # root: /mnt/c/Users/Intel NUC/code/REPA/dps/data/imagenet_val
-  # root: ./data/DAPS_samples
-  # root: /dcs/pg24/u5671205/REPA/DAPS/dataset/test-ffhq_preprocessed/00000
   root: /dcs/pg24/u5671205/REPA/Aligned_Dps/data/00000
 measurement:
   operator:
@@ -17,4 +14,4 @@ measurement:
 
   noise: 
     name: gaussian
-    sigma: 0.05
+    sigma: 0.01

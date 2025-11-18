@@ -5,8 +5,7 @@ conditioning:
 
 data:
   name: ffhq
-  # root: ./data/samples/
-  root: ./data/DAPS_samples/
+  root: ./data/samples/
 
 measurement:
   operator:
