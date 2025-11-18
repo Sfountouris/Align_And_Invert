@@ -1,0 +1,20 @@
+conditioning:
+  method: ps
+  params:
+    scale: 0.3
+
+data:
+  name: ffhq
+  # root: /mnt/c/Users/Intel NUC/code/REPA/dps/data/imagenet_val
+  # root: ./data/DAPS_samples
+  # root: /dcs/pg24/u5671205/REPA/DAPS/dataset/test-ffhq_preprocessed/00000
+  root: /dcs/pg24/u5671205/REPA/Aligned_Dps/data/00000
+measurement:
+  operator:
+    name: motion_blur
+    kernel_size: 61
+    intensity: 0.5
+
+  noise: 
+    name: gaussian
+    sigma: 0.05
