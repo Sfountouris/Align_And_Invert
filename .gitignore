@@ -6,7 +6,6 @@ pretrained_models/
 results_github/
 results_github_test/
 save_similarity_lists/
-
-!data/DAPS_samples/
-!data/imagenet_samples/**
-!data/exclude dataloader.py
+sample.sh
+sample_sbatch.sh
+data/DAPS_samples/

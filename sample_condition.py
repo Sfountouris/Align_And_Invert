@@ -153,54 +153,52 @@ def main(args):
         img_gt = (ref_img + 1) / 2
         measurement = (y_n + 1) / 2
         z = torch.randn(1, model.in_channels, latent_size, latent_size, device=device)
-        for learning_rate in args.learning_rates:
-            for l_repa in args.l_repas:
-                logger.info(f"Inference for image {i}")
-                fname = str(i).zfill(5) + '.png'
-                y = torch.tensor([1000], device=device) # no guidance
-                # Sample images:
-                sampling_kwargs = dict(vae = vae,
-                    dino_encoder = dino_encoder[0],
-                    encoder_type = encoder_types[0],
-                    img_gt = img_gt,
-                    model=model, 
-                    latents=z,
-                    y=y,
-                    l_repa = l_repa,
-                    learning_rate = learning_rate,
-                    num_steps=args.num_steps, 
-                    path_type=args.path_type,
-                    measurement = measurement,
-                    mask = mask,
-                    operator = operator,
-                )
-                
-                samples = euler_sampler(**sampling_kwargs)
-                samples = samples.to(torch.float32)
+        logger.info(f"Inference for image {i}")
+        fname = str(i).zfill(5) + '.png'
+        y = torch.tensor([1000], device=device) # no guidance
+        # Sample images:
+        sampling_kwargs = dict(vae = vae,
+            dino_encoder = dino_encoder[0],
+            encoder_type = encoder_types[0],
+            img_gt = img_gt,
+            model=model, 
+            latents=z,
+            y=y,
+            l_repa = args.l_repa,
+            learning_rate = args.learning_rate,
+            num_steps=args.num_steps, 
+            path_type=args.path_type,
+            measurement = measurement,
+            mask = mask,
+            operator = operator,
+        )
+        
+        samples = euler_sampler(**sampling_kwargs)
+        samples = samples.to(torch.float32)
 
-                samples = vae.decode((samples -  latents_bias) / latents_scale).sample
-                if measure_config['operator'] ['name'] == 'inpainting':
-                        samples = ref_img * mask + (1 - mask) * samples
-                samples = (samples + 1) / 2.
-                
-                samples = torch.clamp(
-                        255. * samples, 0, 255
-                        ).permute(0, 2, 3, 1).to("cpu", dtype=torch.uint8).numpy()
-                for j, sample in enumerate(samples):
-                    ref_img_plot = (ref_img + 1) / 2
-                    y_n_plot = (y_n_temp + 1) / 2
-                    if task_config['measurement']['operator']['name'] == 'super_resolution':
-                        y_n = F.interpolate(y_n, size=(256, 256), mode='bilinear', align_corners=False)
-                    ref_img_plot = torch.clamp(
-                        255. * ref_img_plot, 0, 255
-                        ).permute(0, 2, 3, 1).to("cpu", dtype=torch.uint8).numpy()
-                    y_n_plot = torch.clamp(
-                        255. * y_n_plot, 0, 255
-                        ).permute(0, 2, 3, 1).to("cpu", dtype=torch.uint8).numpy()
-                    ref_img_plot = np.squeeze(ref_img_plot)
-                    y_n_plot = np.squeeze(y_n_plot)
-                    # this function will plot inference results
-                    plot_and_save_info(sample, out_path, fname,ref_img_plot, y_n_plot)
+        samples = vae.decode((samples -  latents_bias) / latents_scale).sample
+        if measure_config['operator'] ['name'] == 'inpainting':
+                samples = ref_img * mask + (1 - mask) * samples
+        samples = (samples + 1) / 2.
+        
+        samples = torch.clamp(
+                255. * samples, 0, 255
+                ).permute(0, 2, 3, 1).to("cpu", dtype=torch.uint8).numpy()
+        for j, sample in enumerate(samples):
+            ref_img_plot = (ref_img + 1) / 2
+            y_n_plot = (y_n_temp + 1) / 2
+            if task_config['measurement']['operator']['name'] == 'super_resolution':
+                y_n = F.interpolate(y_n, size=(256, 256), mode='bilinear', align_corners=False)
+            ref_img_plot = torch.clamp(
+                255. * ref_img_plot, 0, 255
+                ).permute(0, 2, 3, 1).to("cpu", dtype=torch.uint8).numpy()
+            y_n_plot = torch.clamp(
+                255. * y_n_plot, 0, 255
+                ).permute(0, 2, 3, 1).to("cpu", dtype=torch.uint8).numpy()
+            ref_img_plot = np.squeeze(ref_img_plot)
+            y_n_plot = np.squeeze(y_n_plot)
+            # this function will plot inference results
+            plot_and_save_info(sample, out_path, fname,ref_img_plot, y_n_plot)
                         
 
 if __name__ == "__main__":
@@ -240,12 +238,12 @@ if __name__ == "__main__":
         type=float, 
         default=[0.0, 0.0, 0.0, 0.0],
     )
-    parser.add_argument("--l_repas", type = list, default = [0.01])
-    parser.add_argument("--learning_rates", type = list, default = [2])
+    parser.add_argument("--l_repa", type=float, default=0.01)
+    parser.add_argument("--learning_rate", type=float, default=2.0)
     # sampling related hyperparameters
     parser.add_argument("--mode", type=str, default="ode")
     parser.add_argument("--cfg-scale",  type=float, default=1.5)
-    parser.add_argument("--projector-embed-dims", type=str, default="768,1024")
+    parser.add_argument("--projector-embed-dims", type=str, default="768")
     parser.add_argument("--path-type", type=str, default="linear", choices=["linear", "cosine"])
     parser.add_argument("--num-steps", type=int, default=50)
     parser.add_argument("--heun", action=argparse.BooleanOptionalAction, default=False) # only for ode

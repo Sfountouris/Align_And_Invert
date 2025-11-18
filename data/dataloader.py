@@ -17,8 +17,6 @@ def register_dataset(name: str):
 
 
 def get_dataset(name: str, root: str, **kwargs):
-    print("name :", name)
-    print("root :", root)
     if __DATASET__.get(name, None) is None:
         raise NameError(f"Dataset {name} is not defined.")
     return __DATASET__[name](root=root, **kwargs)
