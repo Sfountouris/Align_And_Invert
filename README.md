@@ -3,7 +3,7 @@
 We present Align and Invert, a method for solving inverse problems by enforcing representation alignment between diffusion models and pretrained self-supervised visual encoders such as DINOv2.
 
 <p align="center">
-  <img src="/dcs/pg24/u5671205/REPA/Aligned_Dps/Align_Invert/data/diagram.jpg" width="500">
+  <img src="assets/diagram.jpg" width="500">
 </p>
 
 ## Installation
@@ -36,7 +36,7 @@ python3 sample_condition.py \
   --task_config=configs/super_resolution_config.yaml
 ```
 ---------------------------------------------------------------
-Suggested Hyperparameters for Each Inverse Problem
+Suggested Hyperparameters for each Inverse Problem
 
 | Task               | Config file                               | l_repa  | learning_rate |
 |--------------------|--------------------------------------------|--------|----------------|

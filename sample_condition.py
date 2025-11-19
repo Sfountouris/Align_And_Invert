@@ -258,7 +258,7 @@ if __name__ == "__main__":
     parser.add_argument('--diffusion_config', type=str)
     parser.add_argument('--task_config', type=str)
     parser.add_argument('--gpu', type=int, default=0)
-    parser.add_argument('--save_dir', type=str, default='results_github_test/uniform_steps_repa')
+    parser.add_argument('--save_dir', type=str, default='results_test_expectation/uniform_steps_repa_800')
 
     args = parser.parse_args()
     main(args)
