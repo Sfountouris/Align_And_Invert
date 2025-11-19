@@ -23,9 +23,7 @@ git clone https://github.com/LeviBorodenko/motionblur motionblur
 
 ## Running the Code
 
-## Running the Code
-
-To run the main sampling script, fror latent dps use:
+To run the sampling script, for Latent dps + REPA use:
 
 ```bash
 python3 sample_condition.py \
@@ -36,7 +34,7 @@ python3 sample_condition.py \
   --task_config=configs/super_resolution_config.yaml
 ```
 ---------------------------------------------------------------
-Suggested Hyperparameters for each Inverse Problem
+Suggested Hyperparameters for Latent dps + REPA
 
 | Task               | Config file                               | l_repa  | learning_rate |
 |--------------------|--------------------------------------------|--------|----------------|
@@ -47,7 +45,7 @@ Suggested Hyperparameters for each Inverse Problem
 
 ---------------------------------------------------------------
 
-While for Resample use 
+To run the sampling script, Resample + REPA use: 
 ```bash
 python3  sample_condition_resample.py \
   --model SiT-XL/2 \
@@ -57,7 +55,7 @@ python3  sample_condition_resample.py \
   --task_config=configs/super_resolution_config.yaml
 ```
 
-Suggested Hyperparameters for each Inverse Problem
+Suggested Hyperparameters for Resample + REPA
 
 | Task               | Config file                               | l_repa | learning_rate | max_iters |
 |--------------------|--------------------------------------------|--------|----------------|-----------|
