@@ -5,7 +5,7 @@ conditioning:
 
 data:
   name: ffhq
-  root: /dcs/pg24/u5671205/REPA/Aligned_Dps/data/00000
+  root: ./data/samples/
 measurement:
   operator:
     name: motion_blur

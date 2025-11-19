@@ -25,7 +25,7 @@ git clone https://github.com/LeviBorodenko/motionblur motionblur
 
 ## Running the Code
 
-To run the main sampling script, use:
+To run the main sampling script, fror latent dps use:
 
 ```bash
 python3 sample_condition.py \
@@ -40,12 +40,31 @@ Suggested Hyperparameters for each Inverse Problem
 
 | Task               | Config file                               | l_repa  | learning_rate |
 |--------------------|--------------------------------------------|--------|----------------|
-| Super-resolution   | configs/super_resolution_config.yaml       | 0.01   |      2         |
-| Gaussian Deblurring| configs/gaussian_deblur_config.yaml        | 0.05   |      0.25      |
-| Motion Deblurring  | configs/motion_deblur_config.yaml          | 0.01   |      0.5       |
-| Box Inpainting     | configs/inpainting_config.yaml             | 0.01   |      0.5       |
+| Super-resolution   | configs/super_resolution_config.yaml       | 0.01   |     2         |
+| Gaussian Deblurring| configs/gaussian_deblur_config.yaml        | 0.05   |     0.25      |
+| Motion Deblurring  | configs/motion_deblur_config.yaml          | 0.01   |     0.5       |
+| Box Inpainting     | configs/inpainting_config.yaml             | 0.01   |     0.5       |
 
 ---------------------------------------------------------------
+
+While for Resample use 
+```bash
+python3  sample_condition_resample.py \
+  --model SiT-XL/2 \
+  --l_repa=0.05 \
+  --learning_rate=3.25 \
+  --num-steps=250 \
+  --task_config=configs/super_resolution_config.yaml
+```
+
+Suggested Hyperparameters for each Inverse Problem
+
+| Task               | Config file                               | l_repa | learning_rate | max_iters |
+|--------------------|--------------------------------------------|--------|----------------|-----------|
+| Super-resolution   | configs/super_resolution_config.yaml       | 0.05   | 3.25           |     150      |
+| Gaussian Deblurring| configs/gaussian_deblur_config.yaml        | 0.05   | 0.75           |     300      |
+| Motion Deblurring  | configs/motion_deblur_config.yaml          | 0.05   | 0.75           |     300      |
+
 
 ## Credits
 

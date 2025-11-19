@@ -9,3 +9,6 @@ save_similarity_lists/
 sample.sh
 sample_sbatch.sh
 data/DAPS_samples/
+results_test_expectation/
+test_resample/
+sample_resample.sh
