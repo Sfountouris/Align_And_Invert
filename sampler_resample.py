@@ -269,7 +269,7 @@ def euler_sampler(vae,
         a_cur = 1 - t_cur
         a_prev = 1 - t_next
         sigma = 80 * (1 - a_prev ** 2)/(1 - a_cur ** 2) * (1 - a_cur ** 2/ a_prev ** 2) # Change the 40 value for each task
-
+        
         if i > bound and i % 10 == 0:
             pseudo_x0, _ = latent_optimization(measurement=measurement, vae = vae,
                                                              z_init=best_denoiser.detach(),

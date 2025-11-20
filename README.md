@@ -60,7 +60,7 @@ Suggested Hyperparameters for Resample + REPA
 | Task               | Config file                               | l_repa | learning_rate | max_iters |
 |--------------------|--------------------------------------------|--------|----------------|-----------|
 | Super-resolution   | configs/super_resolution_config.yaml       | 0.05   | 3.25           |     150      |
-| Gaussian Deblurring| configs/gaussian_deblur_config.yaml        | 0.05   | 0.75           |     300      |
+| Gaussian Deblurring| configs/gaussian_deblur_config.yaml        | 0.075  | 0.5           |     300      |
 | Motion Deblurring  | configs/motion_deblur_config.yaml          | 0.05   | 0.75           |     300      |
 
 
