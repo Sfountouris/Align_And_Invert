@@ -242,7 +242,7 @@ if __name__ == "__main__":
     parser.add_argument('--diffusion_config', type=str)
     parser.add_argument('--task_config', type=str)
     parser.add_argument('--gpu', type=int, default=0)
-    parser.add_argument('--save_dir', type=str, default='test_resample/uniform_steps_repa')
+    parser.add_argument('--save_dir', type=str, default='test_results_resample')
 
     args = parser.parse_args()
     main(args)
