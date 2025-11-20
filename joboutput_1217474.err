@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/dcs/pg24/u5671205/REPA/Aligned_Dps/Align_Invert/sample_condition.py", line 4, in <module>
-    import yaml
-ModuleNotFoundError: No module named 'yaml'
