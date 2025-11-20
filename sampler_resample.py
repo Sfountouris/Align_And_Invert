@@ -218,7 +218,6 @@ def euler_sampler(vae,
                 [0., 0., 0., 0.,]
                 ).view(1, 4, 1, 1).to(device)
     _dtype = latents.dtype
-    print('number of steps :', num_steps)
     bound = num_steps - 101
     for i, (t_cur, t_next) in tqdm(enumerate(zip(t_steps[:-2], t_steps[1:-1])), 
                                    total=len(t_steps) - 1, desc="Processing time steps", leave=False, unit="step"):

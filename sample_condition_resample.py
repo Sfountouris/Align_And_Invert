@@ -151,7 +151,8 @@ def main(args):
             y=y,
             l_repa = args.l_repa,
             learning_rate = args.learning_rate,
-            num_steps=args.num_steps, 
+            num_steps=args.num_steps,
+            max_iters = args.max_iters, 
             measurement = measurement,
             mask = mask,
             operator = operator,
@@ -222,6 +223,7 @@ if __name__ == "__main__":
         default=[0.0, 0.0, 0.0, 0.0],
     )
     parser.add_argument("--l_repa", type = float, default = 0.05)
+    parser.add_argument("--max_iters", type = int, default = 150)
     parser.add_argument("--learning_rate", type = float, default = 3.25)
     parser.add_argument("--mode", type=str, default="ode")
     parser.add_argument("--cfg-scale",  type=float, default=1.5)
