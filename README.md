@@ -50,6 +50,7 @@ To run the sampling script, Resample + REPA use:
 python3  sample_condition_resample.py \
   --model SiT-XL/2 \
   --l_repa=0.05 \
+  --max_iters = 150 \
   --learning_rate=3.25 \
   --num-steps=250 \
   --task_config=configs/super_resolution_config.yaml
