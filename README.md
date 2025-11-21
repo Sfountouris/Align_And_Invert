@@ -1,6 +1,6 @@
-# Align and Invert Sampling
+# **Align & Invert** Sampling
 
-We present Align \& Invert, a method for solving inverse problems by enforcing representation alignment between diffusion models and pretrained self-supervised visual encoders such as DINOv2.
+We present **Align \& Invert**, a method for solving inverse problems by enforcing representation alignment between diffusion models and pretrained self-supervised visual encoders such as DINOv2.
 
 <p align="center">
   <img src="assets/diagram.jpg" width="500">
